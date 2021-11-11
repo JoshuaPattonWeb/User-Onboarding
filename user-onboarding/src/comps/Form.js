@@ -1,2 +1,69 @@
 import React, { useState } from 'react';
-import 
+
+
+const Form = (props) => {
+
+    const {change, submit, errors} = props;
+    const {username, email, password, tos, } = props.values
+
+    const onChange = (evt) => {
+        const { name, value, checked, type } = evt.target
+        const newInfo = type === 'checkbox' ? checked : value;
+        change(name, newInfo)
+    }   
+
+    const onSubmit = (evt) => {
+        evt.preventDefault();
+        submit()
+    }
+
+    return (
+       <div>
+        <h1>HELLO THERE FORM!</h1>
+        <p>{errors.username}</p>
+        <p>{errors.password}</p>
+        <p>{errors.email}</p>
+        <p>{errors.tos}</p>
+        <form onSubmit={onSubmit}>
+            <label>Name: 
+                <input
+                type='text'
+                name='username'
+                value={username}
+                onChange={onChange}
+                />
+            </label>
+            <label>Email: 
+                <input
+                type='email'
+                name='email'
+                value={email}
+                onChange={onChange}
+                />
+            </label>
+            <label> Password
+                <input
+                type='password'
+                name='password'
+                value={password}
+                onChange={onChange}
+                />
+            </label>
+            <label>Terms of Service:
+                <input
+                type='checkbox'
+                name='tos'
+                checked={tos}
+                onChange={onChange}
+                />
+            </label>
+            <label>
+                <input type='submit' value='Who else is confused?' />
+            </label>
+        </form>
+       </div>
+    )
+}
+
+
+export default Form;
