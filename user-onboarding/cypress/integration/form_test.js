@@ -56,6 +56,7 @@ describe('Form App', () => {
             nameInput().type('Joshua')
             emailInput().type('fakeemail@email.com')
             passwordInput().type('password')
+            tos().check({ force:true })
             submitBtn().click()
         })
         it('check for validation', () => {
