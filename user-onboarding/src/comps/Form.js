@@ -17,6 +17,10 @@ const Form = (props) => {
         submit()
     }
 
+    const isDisabled = () => {
+        return !username.trim() || !email.trim()
+    }
+
     return (
        <div>
         <h1>HELLO THERE FORM!</h1>
@@ -58,7 +62,7 @@ const Form = (props) => {
                 />
             </label>
             <label>
-                <input type='submit' value='Who else is confused?' />
+                <input id='submitBtn' disabled={isDisabled()} type='submit' value='Who else is confused?' />
             </label>
         </form>
        </div>
